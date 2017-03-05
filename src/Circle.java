@@ -1,7 +1,6 @@
-import static java.lang.Math.PI;
 public class Circle extends Figure
     implements Print{
-    double radius;
+    private final double radius;
 
     @Override
     double calculateArea() {

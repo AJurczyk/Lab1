@@ -1,6 +1,6 @@
 public class Square extends Figure
     implements Print{
-    double a;
+    private final double a;
 
     @Override
     double calculateArea() {

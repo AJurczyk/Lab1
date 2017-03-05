@@ -1,9 +1,5 @@
-/*
-Simply area and perimeter calculator for some regular shapes.
- */
-
 import java.util.Scanner;
-public class Main{
+class Main{
     public static void main(String[] args) {
         boolean exit = false;
         while (!exit) {
@@ -30,7 +26,7 @@ public class Main{
             }
         }
     }
-    public static void printMenu(){
+    private static void printMenu(){
         System.out.println("\n---Calculator menu---");
         System.out.println("Figures:");
         System.out.println("1 - Triangle");
@@ -38,7 +34,7 @@ public class Main{
         System.out.println("3 - Circle");
         System.out.println("4 - Exit");
     }
-    public static void triangleCalculator(){
+    private static void triangleCalculator(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Triangle");
         System.out.print(" a=");
@@ -56,7 +52,7 @@ public class Main{
             System.out.println("Incorrect dimensions, triangle is not valid.");
         }
     }
-    public static void squareCalculator(){
+    private static void squareCalculator(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Square");
         System.out.print(" a=");
@@ -65,7 +61,7 @@ public class Main{
         Square square = new Square(side);
         square.print();
     }
-    public static void circleCalculator(){
+    private static void circleCalculator(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Circle");
         System.out.print("radius= ");
@@ -74,15 +70,10 @@ public class Main{
         Circle circle = new Circle(radius);
         circle.print();
     }
-    public static boolean ifExitCalculator(){
+    private static boolean ifExitCalculator(){
         System.out.println("Are you sure you want to exit? y/n");
         Scanner scanner = new Scanner(System.in);
         char exit_choice = scanner.next().charAt(0);
-        if(exit_choice == 'y' || exit_choice == 'Y') {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (exit_choice == 'y' || exit_choice == 'Y');
     }
 }

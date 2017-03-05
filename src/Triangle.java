@@ -1,22 +1,14 @@
 import static java.lang.Math.sqrt;
 public class Triangle extends Figure
     implements Print{
-    double a,b,c;
+    private final double a;
+    private final double b;
+    private final double c;
 
-    static boolean ifTriangleCanBeFormed(double A,double B, double C) {
-        if (A + B > C && A + C > B && B + C > A) {
-            return true;
-        } else {
-            return false;
-        }
+    static boolean checkIfTriangleIsValid(double A,double B, double C) {
+        return A + B > C && A + C > B && B + C > A;
     }
-    static boolean checkIfTriangleIsValid(double A, double B, double C){
-        if(ifTriangleCanBeFormed(A,B,C))
-            return true;
-        else
-            return false;
-    }
-    static double heron(double A, double B, double C){
+    private static double heron(double A, double B, double C){
         double area =(A+B+C)*(A+B-C)*(A-B+C)*(-A+B+C);
         area = sqrt(area)/4;
         return area;

@@ -1,3 +1,3 @@
-public interface Print {
+interface Print {
     void print();
 }

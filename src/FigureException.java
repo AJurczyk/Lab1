@@ -1,4 +1,4 @@
-public class FigureException extends Exception {
+class FigureException extends Exception {
     public FigureException(){
 
     }
