@@ -4,13 +4,11 @@ public class Square extends Figure
 
     @Override
     double calculateArea() {
-        double area = a*a;
-        return area;
+        return a*a;
     }
     @Override
     double calculatePerimeter() {
-        double perimeter = 4*a;
-        return perimeter;
+        return 4*a;
     }
     public Square(double side){
         a=side;

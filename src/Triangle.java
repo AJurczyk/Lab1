@@ -3,8 +3,15 @@ public class Triangle extends Figure
     implements Print{
     double a,b,c;
 
+    static boolean ifTriangleCanBeFormed(double A,double B, double C) {
+        if (A + B > C && A + C > B && B + C > A) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     static boolean checkIfTriangleIsValid(double A, double B, double C){
-        if(A+B>C && A+C>B && B+C>A)
+        if(ifTriangleCanBeFormed(A,B,C))
             return true;
         else
             return false;
@@ -20,8 +27,7 @@ public class Triangle extends Figure
     }
     @Override
     double calculatePerimeter() {
-        double perimeter = a+b+c;
-        return perimeter;
+        return a+b+c;
     }
     @Override
     public void print() {

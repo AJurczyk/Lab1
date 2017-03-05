@@ -1,3 +1,7 @@
+/*
+Simply area and perimeter calculator for some regular shapes.
+ */
+
 import java.util.Scanner;
 public class Main{
     public static void main(String[] args) {
@@ -43,7 +47,7 @@ public class Main{
         double sideB = scanner.nextDouble();
         System.out.print(" c=");
         double sideC = scanner.nextDouble();
-        //TODO exception here  
+        //TODO exception here
         if(Triangle.checkIfTriangleIsValid(sideA,sideB,sideC)) {
             Triangle triangle = new Triangle(sideA, sideB, sideC);
             triangle.print();
