@@ -4,7 +4,6 @@ class Main{
         boolean exit = false;
         while (!exit) {
             printMenu();
-            System.out.println("Input choice:");
             Scanner scanner = new Scanner(System.in);
             int choice = scanner.nextInt();
             switch (choice) {
@@ -33,6 +32,7 @@ class Main{
         System.out.println("2 - Square");
         System.out.println("3 - Circle");
         System.out.println("4 - Exit");
+        System.out.println("Input choice:");
     }
     private static void triangleCalculator(){
         Scanner scanner = new Scanner(System.in);
