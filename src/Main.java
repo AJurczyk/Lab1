@@ -1,79 +1,50 @@
-import java.util.Scanner;
-class Main{
-    public static void main(String[] args) {
+import figures.exceptions.FigureException;
+import figures.impl.Circle;
+import figures.impl.Square;
+import figures.impl.Triangle;
+import printing.InOutHandler;
+
+public class Main{
+    public static void main(String args[]){
+        InOutHandler inOutHandler = new InOutHandler();
+
         boolean exit = false;
         while (!exit) {
-            printMenu();
-            Scanner scanner = new Scanner(System.in);
-            int choice = scanner.nextInt();
-            switch (choice) {
+            inOutHandler.printMenu();
+            switch (inOutHandler.askForChoice()) {
                 case 1:
-                    triangleCalculator();
+                    inOutHandler.printSimpleMessage("Triangle");
+                    double sideA = inOutHandler.askForParameter("side A");
+                    double sideB = inOutHandler.askForParameter("side B");
+                    double sideC = inOutHandler.askForParameter("side C");
+                    Triangle triangle = null;
+                    try {
+                        triangle = new Triangle(sideA, sideB, sideC);
+                    } catch (FigureException e) {
+                        inOutHandler.printSimpleMessage(e.getMessage());
+                        continue;
+                    }
+                    inOutHandler.printFigureInfo(triangle);
                     break;
                 case 2:
-                    squareCalculator();
+                    inOutHandler.printSimpleMessage("Square");
+                    double side = inOutHandler.askForParameter("side");
+                    Square square = new Square(side);
+                    inOutHandler.printFigureInfo(square);
                     break;
                 case 3:
-                    circleCalculator();
+                    inOutHandler.printSimpleMessage("Circle");
+                    double radius = inOutHandler.askForParameter("radius");
+                    Circle circle = new Circle(radius);
+                    inOutHandler.printFigureInfo(circle);
                     break;
                 case 4:
-                    exit=ifExitCalculator();
+                    exit = inOutHandler.askForExit();
                     break;
                 default:
-                    System.out.println("Incorrect choice. Please try again.");
+                    inOutHandler.printSimpleMessage("Incorrect choice. Please try again.");
                     break;
             }
         }
-    }
-    private static void printMenu(){
-        System.out.println("\n---Calculator menu---");
-        System.out.println("Figures:");
-        System.out.println("1 - Triangle");
-        System.out.println("2 - Square");
-        System.out.println("3 - Circle");
-        System.out.println("4 - Exit");
-        System.out.println("Input choice:");
-    }
-    private static void triangleCalculator(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Triangle");
-        System.out.print(" a=");
-        double sideA = scanner.nextDouble();
-        System.out.print(" b=");
-        double sideB = scanner.nextDouble();
-        System.out.print(" c=");
-        double sideC = scanner.nextDouble();
-        //TODO exception here
-        if(Triangle.checkIfTriangleIsValid(sideA,sideB,sideC)) {
-            Triangle triangle = new Triangle(sideA, sideB, sideC);
-            triangle.print();
-        }
-        else {
-            System.out.println("Incorrect dimensions, triangle is not valid.");
-        }
-    }
-    private static void squareCalculator(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Square");
-        System.out.print(" a=");
-        //TODO exception here
-        double side = scanner.nextDouble(); //exception
-        Square square = new Square(side);
-        square.print();
-    }
-    private static void circleCalculator(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Circle");
-        System.out.print("radius= ");
-        //TODO exception here
-        double radius = scanner.nextDouble();
-        Circle circle = new Circle(radius);
-        circle.print();
-    }
-    private static boolean ifExitCalculator(){
-        System.out.println("Are you sure you want to exit? y/n");
-        Scanner scanner = new Scanner(System.in);
-        char exit_choice = scanner.next().charAt(0);
-        return (exit_choice == 'y' || exit_choice == 'Y');
     }
 }

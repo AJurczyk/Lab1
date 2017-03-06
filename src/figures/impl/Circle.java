@@ -1,16 +1,25 @@
+package figures.impl;
+
+import figures.FigureAbstract;
+
 import static java.lang.Math.PI;
-public class Circle extends Figure
-    implements Print{
+
+public class Circle extends FigureAbstract {
+
     private final double radius;
 
-    @Override
-    double calculateArea() {
-        return PI*radius*radius;
+    public Circle(double r) {
+        radius = r;
     }
 
     @Override
-    double calculatePerimeter() {
-        return 2* PI*radius;
+    public double calculateArea() {
+        return PI * radius * radius;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * PI * radius;
     }
 
     @Override
@@ -19,9 +28,5 @@ public class Circle extends Figure
         java.text.DecimalFormat df = new java.text.DecimalFormat("0.000");
         System.out.println("Area: " + df.format(calculateArea()));
         System.out.println("Perimeter: " + df.format(calculatePerimeter()));
-    }
-
-    Circle(double r){
-           radius=r;
     }
 }
