@@ -8,19 +8,23 @@ public class Triangle extends Figure
     static boolean checkIfTriangleIsValid(double A,double B, double C) {
         return A + B > C && A + C > B && B + C > A;
     }
+
     private static double heron(double A, double B, double C){
         double area =(A+B+C)*(A+B-C)*(A-B+C)*(-A+B+C);
         area = sqrt(area)/4;
         return area;
     }
+
     @Override
     double calculateArea() {
         return heron(a,b,c);
     }
+
     @Override
     double calculatePerimeter() {
         return a+b+c;
     }
+
     @Override
     public void print() {
         System.out.println("Triangle sides length: " +a +", " +b +", " +c);
